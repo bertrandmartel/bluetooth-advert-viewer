@@ -67,6 +67,8 @@ public class BtAdminActivity extends Activity {
      */
     private String TAG = this.getClass().getName();
 
+    private String previousText = "";
+
     private String deviceAddress = "";
 
     private String filter = "";
@@ -139,6 +141,8 @@ public class BtAdminActivity extends Activity {
 
         filter_scanning_editext.setText(filter);
 
+        previousText=filter;
+
         filter_scanning_editext.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -155,13 +159,12 @@ public class BtAdminActivity extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (!s.toString().equals("")) {
-                            SharedPreferences.Editor editor = sharedpreferences.edit();
-                            editor.putString("filterName", filter);
-                            editor.commit();
-                            currentService.getListViewAdapter().setFilter(s.toString().toLowerCase());
-                            currentService.getListViewAdapter().notifyDataSetChanged();
-                        }
+
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.putString("filterName", s.toString().toLowerCase());
+                        editor.commit();
+                        currentService.getListViewAdapter().setFilter(s.toString().toLowerCase());
+                        currentService.getListViewAdapter().notifyDataSetChanged();
                     }
                 });
             }
@@ -176,6 +179,7 @@ public class BtAdminActivity extends Activity {
             scanText.setText("");
 
         button_stop_scanning.setEnabled(false);
+        button_stop_scanning.requestFocus();
 
         final Button button_find_accessory = (Button) findViewById(R.id.scanning_button);
 
@@ -292,6 +296,11 @@ public class BtAdminActivity extends Activity {
     public void onResume() {
         super.onResume();
         toSecondLevel = false;
+        if (!bound) {
+            Log.i(TAG,"value filter => " + filter);
+            Intent intent = new Intent(this, BtAdminService.class);
+            bound = bindService(intent, mServiceConnection, BIND_AUTO_CREATE);
+        }
     }
 
     @Override
@@ -357,9 +366,7 @@ public class BtAdminActivity extends Activity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
-                            if (device != null && device.getName() != null && (device.getName().toLowerCase().contains(filter) || filter.equals(""))) {
-
+                            if (device!=null && device.getName()!=null) {
                                 currentService.getListViewAdapter().replaceElement(0, new BluetoothRecord(device, rssi, scanRecord));
                                 currentService.getListViewAdapter().notifyDataSetChanged();
                             }
@@ -423,6 +430,8 @@ public class BtAdminActivity extends Activity {
             final ArrayList<BluetoothRecord> list = new ArrayList<>();
 
             currentService.setListViewAdapter(new StableArrayAdapter(BtAdminActivity.this, list));
+
+            currentService.getListViewAdapter().setFilter(filter);
 
             device_list_view.setAdapter(currentService.getListViewAdapter());
 
