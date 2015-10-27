@@ -4,6 +4,7 @@ Bluetooth advertizing frame viewer for Android :
 
 * start / stop scan
 * list all advertizing frame received
+* highlight manufacturer data (often used to advertize static or dynamic data)
 * filter frame by device name
 * compatible from Android 4.3+ (works fine on Android TV)
 
