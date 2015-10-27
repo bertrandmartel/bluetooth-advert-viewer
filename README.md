@@ -1,6 +1,5 @@
 # Bluetooth AD frame viewer#
 
-
 Bluetooth advertizing frame viewer for Android :
 
 * start / stop scan
@@ -10,7 +9,7 @@ Bluetooth advertizing frame viewer for Android :
 
 ![screenshot](https://raw.github.com/akinaru/bluetooth-advert-viewer/master/screen2.png)
 
-<h4>Contributors</h4>
+<h1>Contributors</h1>
 
 * Aïman Salmi
 * Bertrand Martel
