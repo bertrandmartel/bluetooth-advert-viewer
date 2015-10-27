@@ -1,0 +1,77 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/drawer_layout"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    tools:context=".FlowerPower">
+
+    <RelativeLayout android:id="@+id/container" android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scan now"
+            android:id="@+id/scanning_button"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_alignTop="@+id/stop_scanning_button"
+            android:layout_alignParentStart="true"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop scan"
+            android:id="@+id/stop_scanning_button"
+            android:layout_gravity="right|top"
+            android:layout_toEndOf="@+id/scanning_button"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:id="@+id/listView"
+            android:dividerHeight="3dp"
+            android:layout_below="@+id/scanning_button"
+            android:layout_alignParentStart="true" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/scanText"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/listView"
+            android:paddingLeft="5dp"
+            android:textColor="#ff000000"
+            android:textSize="20dp"
+            android:gravity="center_vertical|left"
+            android:layout_toEndOf="@+id/stop_scanning_button" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:paddingLeft="5dp"
+            android:layout_toEndOf="@+id/scanText"
+            android:id="@+id/scanningProgress" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:imeOptions="actionDone"
+            android:hint="set a device name filter"
+            android:id="@+id/filter_scanning_editext"
+            android:layout_gravity="right|top"
+            android:layout_toEndOf="@+id/scanningProgress"
+            android:paddingLeft="5dp"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
