@@ -14,3 +14,8 @@ Bluetooth advertizing frame viewer for Android :
 
 * Aïman Salmi
 * Bertrand Martel
+
+<h4>External libraries</h4>
+
+* Bluetooth AD frame decode https://github.com/akinaru/bluetooth-ad-frame-decoder
+
