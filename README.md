@@ -8,7 +8,7 @@ Bluetooth advertizing frame viewer for Android :
 * filter frame by device name
 * compatible from Android 4.3+ (works fine on Android TV)
 
-![screenshot](https://raw.github.com/akinaru/bluetooth-advert-viewer/master/screen2.png)
+![screenshot](https://raw.github.com/bertrandmartel/bluetooth-advert-viewer/master/screen2.png)
 
 <h1>Contributors</h1>
 
@@ -17,5 +17,5 @@ Bluetooth advertizing frame viewer for Android :
 
 <h4>External libraries</h4>
 
-* Bluetooth AD frame decode https://github.com/akinaru/bluetooth-ad-frame-decoder
+* Bluetooth AD frame decode https://github.com/bertrandmartel/bluetooth-ad-frame-decoder
 
